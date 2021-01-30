@@ -1,0 +1,112 @@
+@page
+@model PuppetGame.Pages.Puppets.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<p>Viewdata number: @ViewData["Number"]</p>
+<p> number: @ViewData["Number2"]</p>
+<div class="row">   
+    @for (int i = 0; i < Model.Number; i++){
+        <div class="col">
+            <h4>Team</h4>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Hat.Name" class="control-label"></label>
+                    <input asp-for="Hat.Name" class="form-control" />
+                    <span asp-validation-for="Hat.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hat.Energy" class="control-label"></label>
+                    <input asp-for="Hat.Energy" class="form-control" />
+                    <span asp-validation-for="Hat.Energy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hat.Pot" class="control-label"></label>
+                    <input asp-for="Hat.Pot" class="form-control" />
+                    <span asp-validation-for="Hat.Pot" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hat.Ability" class="control-label"></label>
+                    <input asp-for="Hat.Ability" class="form-control" />
+                    <span asp-validation-for="Hat.Ability" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    }
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+//////////////////////////////////////////////////////////////////
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using PuppetGame.Data;
+using PuppetGame.Models;
+
+namespace PuppetGame.Pages.Puppets
+{
+    public class CreateModel : PageModel
+    {
+        public int NumberTeam { get; set; }
+        public int Number { get; set; }
+        
+        private readonly PuppetGame.Data.PuppetContext _context;
+
+        public CreateModel(PuppetGame.Data.PuppetContext context)
+        {
+            _context = context;
+        }
+
+        public IActionResult OnGet(int TeamNumber)
+        {
+            ViewData["Number"] = TeamNumber;
+
+
+            Number = TeamNumber;
+
+            ViewData["Number2"] = Number;
+
+            return Page();
+        }
+
+        
+        
+
+        [BindProperty]
+        public Hat Hat { get; set; }
+
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            _context.Hats.Add(Hat);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
+        }
+    }
+}

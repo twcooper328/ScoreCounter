@@ -1,0 +1,162 @@
+@page
+@model PuppetGame.Pages.Puppets.ReCreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container-fluid">
+        <div class="row css-team-input css-team-rounder">
+            <div class="col">
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <th>
+                                <label asp-for="Team.Name" class="control-label"></label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input asp-for="Team.Name" class="" />
+                                <span asp-validation-for="Team.Name" class="text-danger"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col css-team-input">
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <th>
+                                <label asp-for="Team.HatChoice" class="control-label"></label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input asp-for="Team.HatChoice" list="hats" class="" />
+                                <span asp-validation-for="Team.HatChoice" class="text-danger"></span>
+                                <datalist id="hats">
+                                    <option value="Visionary's Visor"></option>
+                                    <option value="Cool-Down Cap"></option>
+                                    <option value="Motivating SweatBand"></option>
+                                    <option value="Business Bluetooth"></option>
+                                    <option value="Soothing Strawhat"></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <th>
+                                <label asp-for="Team.EyeChoice" class="control-label"></label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input asp-for="Team.EyeChoice" list="eyes" class="" />
+                                <span asp-validation-for="Team.EyeChoice" class="text-danger"></span>
+                                <datalist id="eyes">
+                                    <option value="Optimistic Per-Spectacles"></option>
+                                    <option value="Gambler's Gaze"></option>
+                                    <option value="Bountiful Outlook"></option>
+                                    <option value="Watchful Eye"></option>
+                                    <option value="Market Specs"></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <th>
+                                <label asp-for="Team.ArmChoice" class="control-label"></label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input asp-for="Team.ArmChoice" list="arms" class="" />
+                                <span asp-validation-for="Team.ArmChoice" class="text-danger"></span>
+                                <datalist id="arms">
+                                    <option value="Business-Case"></option>
+                                    <option value="Martial-Arms"></option>
+                                    <option value="Tiny T-Rex Arms"></option>
+                                    <option value="Power Sleeve"></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <th>
+                                <label asp-for="Team.LegChoice" class="control-label"></label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input asp-for="Team.LegChoice" list="legs" class="" />
+                                <span asp-validation-for="Team.LegChoice" class="text-danger"></span>
+                                <datalist id="legs">
+                                    <option value="Seed-money Slacks"></option>
+                                    <option value="Runner's Trunks"></option>
+                                    <option value="Investor's Dress-Skirt"></option>
+                                    <option value="Kris-Kross Jeans"></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Go!" class="btn btn-primary btn-block" />
+                </div>
+            </div>        
+        </div>
+    </div>
+</form>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="css-team-current">Number of Teams: @ViewData["Number3"]</h3>
+            <a asp-page="./Score" class="css-tag-style btn-block">Play</a> 
+
+        </div>
+        <div class="col">
+            @foreach (var item in Model.TeamList) {
+                <div class="row css-team-input css-team-padding">
+                    <div class="col-md-8">
+                        <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
+                    </div>
+                    <div class="col">
+                        <a asp-page="./Edit" class="css-tag-style btn-block" asp-route-id="@item.TeamID">Edit</a> 
+                    </div>
+                    <div class="col">
+                        <a asp-page="./Delete" class="css-tag-style btn-block" asp-route-id="@item.TeamID">Delete</a>
+                    </div>                     
+                </div>
+            }
+        </div>
+    </div>
+</div>
+ 
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,153 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #c21b1b;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #c21b1b;
+  border-color: #c21b1b;
+}
+
+.btn-primary:hover {
+  color: #c21b1b;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #c21b1b;
+  border-color: #c21b1b;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+/* Card styles
+-------------------------------------------------- */
+.cs-team-card {
+  background-color: #0366d6;
+  border-radius: 15px;
+}
+
+.css-team-input {
+  background-color: #010a14;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.css-team-input-margin {
+  margin: 5px;
+  padding: 10px;
+}
+
+.css-team-rounder {
+  border-radius: 15px;
+}
+
+.css-team-padding {
+  padding: 10px;
+}
+
+.css-team-current {
+  background-color: #724e4e;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.css-tag-style {
+  background-color: #350923;
+  color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.css-tag-style:hover {
+  background-color: #ffffff;
+  color:#c21b1b;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.css-tag-style a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+.css-team-title {
+  background-color: #c21b1b;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.css-team-subtitle {
+  background-color: #724e4e;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.css-team-subcolor {
+  color: #c21b1b;
+}
